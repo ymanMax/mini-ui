@@ -1,0 +1,37 @@
+<!-- pages/home/home.wxml -->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <view class="page-title">组件库示例</view>
+    <view class="page-subtitle">探索丰富的小程序组件</view>
+  </view>
+
+  <!-- 组件列表 -->
+  <view class="components-list">
+    <view 
+      class="component-card" 
+      wx:for="{{components}}" 
+      wx:key="id"
+      data-path="{{item.path}}"
+      bindtap="goToComponent">
+      
+      <!-- 组件图标 -->
+      <view class="component-icon">{{item.icon}}</view>
+      
+      <!-- 组件信息 -->
+      <view class="component-info">
+        <view class="component-name">{{item.name}}</view>
+        <view class="component-description">{{item.description}}</view>
+      </view>
+      
+      <!-- 箭头图标 -->
+      <view class="arrow-icon">></view>
+    </view>
+  </view>
+
+  <!-- 页面底部信息 -->
+  <view class="page-footer">
+    <view class="footer-text">Mini UI Components</view>
+    <view class="footer-version">v1.0.0</view>
+  </view>
+</view>

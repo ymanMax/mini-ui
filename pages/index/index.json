@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "picker": "../../picker/picker"
+    "picker": "../../components/picker/picker"
   }
 }
