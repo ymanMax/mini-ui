@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/timepicker-demo/timepicker-demo",
-    "pages/index/index"
+    "pages/home/home",
+    "pages/index/index",
+    "pages/timepicker-demo/timepicker-demo"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "Mini UI",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -247,6 +247,7 @@ Component({
 
     // 打开选择器
     _openPicker() {
+      this._initData() // 确保数据已初始化
       this.setData({
         isOpen: true
       })

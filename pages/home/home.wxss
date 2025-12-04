@@ -1,0 +1,227 @@
+/* pages/home/home.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+
+/* 页面头部样式 */
+.page-header {
+  text-align: center;
+  margin-bottom: 80rpx;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.page-title {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.3);
+}
+
+.page-subtitle {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+/* 组件列表样式 */
+.components-list {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.component-card {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 卡片装饰线 */
+.component-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 8rpx;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  transition: transform 0.3s ease;
+}
+
+.component-card:active {
+  transform: translateY(5rpx);
+  box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, 0.3);
+}
+
+.component-card:active::before {
+  transform: scaleY(1.1);
+}
+
+/* 组件图标样式 */
+.component-icon {
+  font-size: 60rpx;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20rpx;
+  margin-right: 30rpx;
+  box-shadow: 0 5rpx 15rpx rgba(102, 126, 234, 0.4);
+}
+
+/* 组件信息样式 */
+.component-info {
+  flex: 1;
+}
+
+.component-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 10rpx;
+}
+
+.component-description {
+  font-size: 26rpx;
+  color: #6c757d;
+  line-height: 1.5;
+}
+
+/* 箭头图标样式 */
+.arrow-icon {
+  font-size: 36rpx;
+  color: #adb5bd;
+  font-weight: 300;
+  margin-left: 20rpx;
+}
+
+/* 页面底部样式 */
+.page-footer {
+  text-align: center;
+  margin-top: 80rpx;
+  padding-top: 40rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10rpx;
+}
+
+.footer-version {
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 动画效果 */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 414px) {
+  .container {
+    padding: 30rpx 20rpx;
+  }
+
+  .page-title {
+    font-size: 42rpx;
+  }
+
+  .page-subtitle {
+    font-size: 26rpx;
+  }
+
+  .component-card {
+    padding: 30rpx;
+  }
+
+  .component-icon {
+    font-size: 50rpx;
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 20rpx;
+  }
+
+  .component-name {
+    font-size: 30rpx;
+  }
+
+  .component-description {
+    font-size: 24rpx;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 25rpx 15rpx;
+  }
+
+  .page-title {
+    font-size: 38rpx;
+  }
+
+  .page-subtitle {
+    font-size: 24rpx;
+  }
+
+  .component-card {
+    padding: 25rpx;
+    margin-bottom: 20rpx;
+  }
+
+  .component-icon {
+    font-size: 45rpx;
+    width: 70rpx;
+    height: 70rpx;
+    margin-right: 15rpx;
+  }
+
+  .component-name {
+    font-size: 28rpx;
+  }
+
+  .component-description {
+    font-size: 22rpx;
+  }
+}
