@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/timepicker-demo/timepicker-demo",
     "pages/index/index"
   ],
   "window": {
