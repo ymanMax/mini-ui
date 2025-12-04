@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "timepicker": "../../timepicker/timepicker"
+  },
+  "navigationBarTitleText": "时间选择器示例"
+}

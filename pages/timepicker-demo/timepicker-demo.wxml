@@ -1,0 +1,79 @@
+<!-- pages/timepicker-demo/timepicker-demo.wxml -->
+<view class="container">
+  <view class="demo-title">时间选择器示例</view>
+
+  <!-- 示例1: datetime类型 -->
+  <view class="demo-section">
+    <view class="section-title">1. 日期时间选择 (datetime)</view>
+    <view class="demo-item">
+      <text class="label">选择日期时间:</text>
+      <text class="value" bindtap="showDatetimePicker">{{selectedDatetime || '点击选择'}}</text>
+    </view>
+  </view>
+
+  <!-- 示例2: date类型 -->
+  <view class="demo-section">
+    <view class="section-title">2. 日期选择 (date)</view>
+    <view class="demo-item">
+      <text class="label">选择日期:</text>
+      <text class="value" bindtap="showDatePicker">{{selectedDate || '点击选择'}}</text>
+    </view>
+  </view>
+
+  <!-- 示例3: time类型 -->
+  <view class="demo-section">
+    <view class="section-title">3. 时间选择 (time)</view>
+    <view class="demo-item">
+      <text class="label">选择时间:</text>
+      <text class="value" bindtap="showTimePicker">{{selectedTime || '点击选择'}}</text>
+    </view>
+  </view>
+
+  <!-- 示例4: year类型 -->
+  <view class="demo-section">
+    <view class="section-title">4. 年份选择 (year)</view>
+    <view class="demo-item">
+      <text class="label">选择年份:</text>
+      <text class="value" bindtap="showYearPicker">{{selectedYear || '点击选择'}}</text>
+    </view>
+  </view>
+
+  <!-- 示例5: year-month类型 -->
+  <view class="demo-section">
+    <view class="section-title">5. 年月选择 (year-month)</view>
+    <view class="demo-item">
+      <text class="label">选择年月:</text>
+      <text class="value" bindtap="showYearMonthPicker">{{selectedYearMonth || '点击选择'}}</text>
+    </view>
+  </view>
+
+  <!-- 示例6: 带minDate和maxDate限制 -->
+  <view class="demo-section">
+    <view class="section-title">6. 带日期范围限制</view>
+    <view class="demo-item">
+      <text class="label">选择出生日期 (1990-2005):</text>
+      <text class="value" bindtap="showLimitedDatePicker">{{selectedLimitedDate || '点击选择'}}</text>
+    </view>
+  </view>
+
+  <!-- 示例7: 自定义formatter -->
+  <view class="demo-section">
+    <view class="section-title">7. 自定义时间格式</view>
+    <view class="demo-item">
+      <text class="label">选择时间 (自定义格式):</text>
+      <text class="value" bindtap="showCustomFormatPicker">{{selectedCustomFormat || '点击选择'}}</text>
+    </view>
+  </view>
+
+  <!-- 时间选择器组件 -->
+  <timepicker
+    type="{{pickerConfig.type}}"
+    min-date="{{pickerConfig.minDate}}"
+    max-date="{{pickerConfig.maxDate}}"
+    formatter="{{pickerConfig.formatter}}"
+    is-show-picker="{{isShowPicker}}"
+    title-text="{{pickerConfig.titleText}}"
+    bind:cancel="onPickerCancel"
+    bind:confirm="onPickerConfirm">
+  </timepicker>
+</view>
