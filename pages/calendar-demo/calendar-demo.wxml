@@ -1,0 +1,134 @@
+<!-- pages/calendar-demo/calendar-demo.wxml -->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">日历组件示例</text>
+    <text class="page-subtitle">支持单选、范围选择和多选模式</text>
+  </view>
+
+  <!-- 选择模式切换 -->
+  <view class="mode-switcher">
+    <text class="switcher-label">选择模式：</text>
+    <view class="switcher-buttons">
+      <button class="mode-btn {{calendarConfig.mode === 'single' ? 'active' : ''}}"
+              bindtap="changeMode"
+              data-mode="single">
+        单选
+      </button>
+      <button class="mode-btn {{calendarConfig.mode === 'range' ? 'active' : ''}}"
+              bindtap="changeMode"
+              data-mode="range">
+        范围选择
+      </button>
+      <button class="mode-btn {{calendarConfig.mode === 'multiple' ? 'active' : ''}}"
+              bindtap="changeMode"
+              data-mode="multiple">
+        多选
+      </button>
+    </view>
+  </view>
+
+  <!-- 结果展示 -->
+  <view class="result-section">
+    <text class="result-label">选择结果：</text>
+
+    <!-- 单选模式结果 -->
+    <view class="result-content" wx:if="{{calendarConfig.mode === 'single'}}">
+      <view class="result-item {{selectedDate ? 'has-value' : ''}}">
+        <text class="result-text">
+          {{selectedDate ? `已选择日期：${selectedDate}` : '请选择一个日期'}}
+        </text>
+      </view>
+    </view>
+
+    <!-- 范围选择模式结果 -->
+    <view class="result-content" wx:if="{{calendarConfig.mode === 'range'}}">
+      <view class="result-item {{selectedRange.length === 2 ? 'has-value' : ''}}">
+        <text class="result-text">
+          {{selectedRange.length === 2
+            ? `已选择日期范围：${selectedRange[0]} 至 ${selectedRange[1]}`
+            : '请选择日期范围'}}
+        </text>
+      </view>
+    </view>
+
+    <!-- 多选模式结果 -->
+    <view class="result-content" wx:if="{{calendarConfig.mode === 'multiple'}}">
+      <view class="result-item {{selectedMultiple.length > 0 ? 'has-value' : ''}}">
+        <text class="result-text">
+          {{selectedMultiple.length > 0
+            ? `已选择 ${selectedMultiple.length} 个日期：${selectedMultiple.join('、')}`
+            : '请选择多个日期'}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打开日历按钮 -->
+  <view class="calendar-action">
+    <button class="open-calendar-btn" bindtap="openCalendar">
+      打开日历选择器
+    </button>
+  </view>
+
+  <!-- 日历组件 -->
+  <calendar
+    mode="{{calendarConfig.mode}}"
+    min-date="{{calendarConfig.minDate}}"
+    max-date="{{calendarConfig.maxDate}}"
+    max-range="{{calendarConfig.maxRange}}"
+    default-date="{{calendarConfig.defaultDate}}"
+    disabled-date="{{disabledDate}}"
+    formatter="{{dateFormatter}}"
+    is-show-calendar="{{calendarConfig.isShowCalendar}}"
+    title-text="{{calendarConfig.titleText}}"
+    cancel-text="{{calendarConfig.cancelText}}"
+    confirm-text="{{calendarConfig.confirmText}}"
+    bind:confirm="onCalendarConfirm"
+    bind:cancel="onCalendarCancel"
+    bind:select="onCalendarSelect"
+    bind:month-change="onCalendarMonthChange">
+  </calendar>
+
+  <!-- 说明文档 -->
+  <view class="documentation-section">
+    <text class="section-title">功能说明：</text>
+
+    <view class="feature-list">
+      <view class="feature-item">
+        <text class="feature-icon">✅</text>
+        <text class="feature-text">支持三种选择模式：单选、范围选择、多选</text>
+      </view>
+
+      <view class="feature-item">
+        <text class="feature-icon">✅</text>
+        <text class="feature-text">可设置最小日期、最大日期和范围选择的最大天数</text>
+      </view>
+
+      <view class="feature-item">
+        <text class="feature-icon">✅</text>
+        <text class="feature-text">支持自定义禁用日期函数，可以禁用特定日期或日期范围</text>
+      </view>
+
+      <view class="feature-item">
+        <text class="feature-icon">✅</text>
+        <text class="feature-text">支持自定义日期格式化函数，可以为特定日期添加自定义文案</text>
+      </view>
+
+      <view class="feature-item">
+        <text class="feature-icon">✅</text>
+        <text class="feature-text">支持滑动切换月份，提供流畅的移动端交互体验</text>
+      </view>
+
+      <view class="feature-item">
+        <text class="feature-icon">✅</text>
+        <text class="feature-text">提供完整的事件系统：确认事件、取消事件、选择事件、月份切换事件</text>
+      </view>
+
+      <view class="feature-item">
+        <text class="feature-icon">✅</text>
+        <text class="feature-text">支持自定义样式，可以通过属性设置各种样式</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -18,6 +18,13 @@ Page({
         description: '多功能时间选择器，支持日期、时间等多种格式',
         icon: '⏰',
         path: '/pages/timepicker-demo/timepicker-demo'
+      },
+      {
+        id: 'calendar',
+        name: '日历选择器',
+        description: '支持单选、范围选择、多选的日历组件，功能丰富',
+        icon: '📅',
+        path: '/pages/calendar-demo/calendar-demo'
       }
     ]
   },
