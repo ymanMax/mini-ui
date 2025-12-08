@@ -67,12 +67,8 @@
 
   <!-- 时间选择器组件 -->
   <timepicker
+    show="{{isShowPicker}}"
     type="{{pickerConfig.type}}"
-    min-date="{{pickerConfig.minDate}}"
-    max-date="{{pickerConfig.maxDate}}"
-    formatter="{{pickerConfig.formatter}}"
-    is-show-picker="{{isShowPicker}}"
-    title-text="{{pickerConfig.titleText}}"
     bind:cancel="onPickerCancel"
     bind:confirm="onPickerConfirm">
   </timepicker>

@@ -1,0 +1,50 @@
+<!-- timepicker-pure/timepicker-pure.wxml -->
+<view class="timepicker-container" wx:if="{{isVisible}}">
+  <!-- 蒙层 -->
+  <view class="timepicker-mask" bindtap="hidePicker"></view>
+
+  <!-- 选择器主体 -->
+  <view class="timepicker-content">
+    <!-- 头部 -->
+    <view class="timepicker-header">
+      <text class="timepicker-btn timepicker-cancel" bindtap="onCancel">取消</text>
+      <view class="timepicker-title">{{title}}</view>
+      <text class="timepicker-btn timepicker-confirm" bindtap="onConfirm">确定</text>
+    </view>
+
+    <!-- 选择器主体 -->
+    <view class="timepicker-body">
+      <!-- 选择器列容器 -->
+      <view class="timepicker-columns">
+        <!-- 每一列 -->
+        <view 
+          class="timepicker-column" 
+          wx:for="{{columns}}" 
+          wx:for-index="columnIndex" 
+          wx:key="columnIndex"
+          data-column-index="{{columnIndex}}"
+          bindtouchstart="onTouchStart"
+          bindtouchmove="onTouchMove"
+          bindtouchend="onTouchEnd">
+          
+          <!-- 选择器列内容 -->
+          <view class="timepicker-column-content" style="transform: translateY(-{{scrollOffset[columnIndex]}}rpx);">
+            <view 
+              class="timepicker-item {{selectedIndex[columnIndex] === itemIndex ? 'timepicker-item-selected' : ''}}" 
+              wx:for="{{item}}" 
+              wx:for-index="itemIndex" 
+              wx:key="itemIndex"
+              data-column-index="{{columnIndex}}"
+              data-item-index="{{itemIndex}}"
+              bindtap="onItemTap">
+              {{item}}
+            </view>
+          </view>
+          
+          <!-- 选中区域指示器 -->
+          <view class="timepicker-indicator"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

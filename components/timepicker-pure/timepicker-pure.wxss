@@ -1,0 +1,257 @@
+/* timepicker-pure/timepicker-pure.wxss */
+.timepicker-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* 蒙层样式 */
+.timepicker-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 选择器主体样式 */
+.timepicker-content {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+  max-height: 80vh;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* 头部样式 */
+.timepicker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 32rpx;
+  background-color: #f8f9fa;
+  border-bottom: 1rpx solid #e9ecef;
+}
+
+.timepicker-btn {
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 12rpx 24rpx;
+  border-radius: 8rpx;
+  transition: all 0.3s ease;
+}
+
+.timepicker-cancel {
+  color: #6c757d;
+  background-color: transparent;
+}
+
+.timepicker-cancel:active {
+  background-color: #e9ecef;
+  transform: scale(0.95);
+}
+
+.timepicker-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #212529;
+  flex: 1;
+  text-align: center;
+  margin: 0 24rpx;
+}
+
+.timepicker-confirm {
+  color: #007bff;
+  background-color: transparent;
+}
+
+.timepicker-confirm:active {
+  background-color: #e3f2fd;
+  transform: scale(0.95);
+}
+
+/* 选择器主体样式 */
+.timepicker-body {
+  padding: 20rpx;
+  height: 400rpx;
+}
+
+/* 选择器列容器样式 */
+.timepicker-columns {
+  display: flex;
+  height: 100%;
+}
+
+/* 选择器列样式 */
+.timepicker-column {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #fafafa;
+  border-radius: 12rpx;
+  margin: 0 8rpx;
+}
+
+/* 选择器列内容样式 */
+.timepicker-column-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.1s ease-out;
+  padding: 120rpx 0; /* 上下预留空间 */
+}
+
+/* 选择器选项样式 */
+.timepicker-item {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #666666;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 选中选项样式 */
+.timepicker-item-selected {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #007bff;
+}
+
+/* 选中区域指示器样式 */
+.timepicker-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  transform: translateY(-50%);
+  background-color: rgba(0, 123, 255, 0.05);
+  border-top: 1rpx solid rgba(0, 123, 255, 0.2);
+  border-bottom: 1rpx solid rgba(0, 123, 255, 0.2);
+  pointer-events: none;
+}
+
+/* 渐变遮罩效果 */
+.timepicker-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  background: linear-gradient(to bottom, rgba(250, 250, 250, 1) 0%, rgba(250, 250, 250, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.timepicker-column::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  background: linear-gradient(to top, rgba(250, 250, 250, 1) 0%, rgba(250, 250, 250, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 414px) {
+  .timepicker-header {
+    padding: 20rpx 24rpx;
+  }
+
+  .timepicker-btn {
+    font-size: 28rpx;
+    padding: 10rpx 20rpx;
+  }
+
+  .timepicker-title {
+    font-size: 30rpx;
+    margin: 0 20rpx;
+  }
+
+  .timepicker-body {
+    height: 350rpx;
+  }
+
+  .timepicker-item {
+    height: 70rpx;
+    font-size: 26rpx;
+  }
+
+  .timepicker-item-selected {
+    font-size: 30rpx;
+  }
+
+  .timepicker-indicator {
+    height: 70rpx;
+  }
+}
+
+@media (max-width: 375px) {
+  .timepicker-header {
+    padding: 16rpx 20rpx;
+  }
+
+  .timepicker-btn {
+    font-size: 26rpx;
+    padding: 8rpx 16rpx;
+  }
+
+  .timepicker-title {
+    font-size: 28rpx;
+    margin: 0 16rpx;
+  }
+
+  .timepicker-body {
+    height: 320rpx;
+  }
+
+  .timepicker-item {
+    height: 64rpx;
+    font-size: 24rpx;
+  }
+
+  .timepicker-item-selected {
+    font-size: 28rpx;
+  }
+
+  .timepicker-indicator {
+    height: 64rpx;
+  }
+}
