@@ -25,6 +25,13 @@ Page({
         description: '支持单选、范围选择、多选的日历组件，功能丰富',
         icon: '📅',
         path: '/pages/calendar-demo/calendar-demo'
+      },
+      {
+        id: 'treeselect',
+        name: '分类选择器',
+        description: '支持单选、多选的分类选择组件，底部弹出，双栏布局',
+        icon: '📑',
+        path: '/pages/treeselect-demo/treeselect-demo'
       }
     ]
   },
