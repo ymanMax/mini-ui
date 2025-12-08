@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "timepicker": "../../components/timepicker-pure/timepicker-pure"
+    "timepicker": "../../components/timepicker/timepicker"
   },
   "navigationBarTitleText": "时间选择器示例"
 }

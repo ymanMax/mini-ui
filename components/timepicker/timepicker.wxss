@@ -1,4 +1,4 @@
-/* timepicker/timepicker.wxss */
+/* timepicker-pure/timepicker-pure.wxss */
 .timepicker-container {
   position: fixed;
   top: 0;
@@ -39,6 +39,7 @@
   border-radius: 20rpx 20rpx 0 0;
   overflow: hidden;
   animation: slideUp 0.3s ease-out;
+  max-height: 80vh;
 }
 
 @keyframes slideUp {
@@ -97,50 +98,95 @@
   transform: scale(0.95);
 }
 
-/* 选择器样式 */
-.timepicker-picker {
+/* 选择器主体样式 */
+.timepicker-body {
+  padding: 20rpx;
   height: 400rpx;
-  background-color: #ffffff;
+}
+
+/* 选择器列容器样式 */
+.timepicker-columns {
+  display: flex;
+  height: 100%;
+}
+
+/* 选择器列样式 */
+.timepicker-column {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #fafafa;
+  border-radius: 12rpx;
+  margin: 0 8rpx;
+}
+
+/* 选择器列内容样式 */
+.timepicker-column-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.1s ease-out;
+  padding: 120rpx 0; /* 上下预留空间 */
 }
 
 /* 选择器选项样式 */
 .timepicker-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 80rpx;
-  font-size: 32rpx;
-  color: #495057;
-  line-height: 1.5;
-  transition: all 0.3s ease;
-}
-
-/* 选中项的样式（通过picker-view的indicator-style控制） */
-picker-view ::deep .wx-picker-view-indicator {
-  height: 50rpx !important;
-  background-color: rgba(0, 123, 255, 0.1) !important;
-  border-top: 1rpx solid rgba(0, 123, 255, 0.3) !important;
-  border-bottom: 1rpx solid rgba(0, 123, 255, 0.3) !important;
-}
-
-/* 选择器列的样式 */
-picker-view-column {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 28rpx;
+  color: #666666;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-/* 非选中项的透明度 */
-picker-view ::deep .wx-picker-view-mask {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.4) 30%,
-    rgba(255, 255, 255, 0) 50%,
-    rgba(255, 255, 255, 0.4) 70%,
-    rgba(255, 255, 255, 0.9) 100%
-  ) !important;
+/* 选中选项样式 */
+.timepicker-item-selected {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #007bff;
+}
+
+/* 选中区域指示器样式 */
+.timepicker-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  transform: translateY(-50%);
+  background-color: rgba(0, 123, 255, 0.05);
+  border-top: 1rpx solid rgba(0, 123, 255, 0.2);
+  border-bottom: 1rpx solid rgba(0, 123, 255, 0.2);
+  pointer-events: none;
+}
+
+/* 渐变遮罩效果 */
+.timepicker-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  background: linear-gradient(to bottom, rgba(250, 250, 250, 1) 0%, rgba(250, 250, 250, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.timepicker-column::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  background: linear-gradient(to top, rgba(250, 250, 250, 1) 0%, rgba(250, 250, 250, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* 响应式设计 */
@@ -159,13 +205,21 @@ picker-view ::deep .wx-picker-view-mask {
     margin: 0 20rpx;
   }
 
-  .timepicker-picker {
+  .timepicker-body {
     height: 350rpx;
   }
 
   .timepicker-item {
     height: 70rpx;
-    font-size: 28rpx;
+    font-size: 26rpx;
+  }
+
+  .timepicker-item-selected {
+    font-size: 30rpx;
+  }
+
+  .timepicker-indicator {
+    height: 70rpx;
   }
 }
 
@@ -184,12 +238,20 @@ picker-view ::deep .wx-picker-view-mask {
     margin: 0 16rpx;
   }
 
-  .timepicker-picker {
+  .timepicker-body {
     height: 320rpx;
   }
 
   .timepicker-item {
     height: 64rpx;
-    font-size: 26rpx;
+    font-size: 24rpx;
+  }
+
+  .timepicker-item-selected {
+    font-size: 28rpx;
+  }
+
+  .timepicker-indicator {
+    height: 64rpx;
   }
 }

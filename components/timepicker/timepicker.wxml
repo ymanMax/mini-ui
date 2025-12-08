@@ -1,32 +1,50 @@
-<!-- timepicker/timepicker.wxml -->
-<view class="timepicker-container" wx:if="{{isOpen}}">
+<!-- timepicker-pure/timepicker-pure.wxml -->
+<view class="timepicker-container" wx:if="{{isVisible}}">
   <!-- 蒙层 -->
-  <view class="timepicker-mask" bindtap="tapModal"></view>
+  <view class="timepicker-mask" bindtap="hidePicker"></view>
 
   <!-- 选择器主体 -->
   <view class="timepicker-content">
     <!-- 头部 -->
     <view class="timepicker-header">
-      <text class="timepicker-btn timepicker-cancel" bindtap="cancel">{{cancelText}}</text>
-      <view class="timepicker-title">{{titleText}}</view>
-      <text class="timepicker-btn timepicker-confirm" bindtap="confirm">{{sureText}}</text>
+      <text class="timepicker-btn timepicker-cancel" bindtap="onCancel">取消</text>
+      <view class="timepicker-title">{{title}}</view>
+      <text class="timepicker-btn timepicker-confirm" bindtap="onConfirm">确定</text>
     </view>
 
-    <!-- 选择器 -->
-    <view class="timepicker-picker">
-      <picker-view
-        value="{{value}}"
-        bindchange="_bindChange"
-        bindpickstart="_bindpickstart"
-        bindpickend="_bindpickend"
-        indicator-style="height: 50rpx;"
-        mask-style="background-color: rgba(0, 0, 0, 0.1);">
-        <picker-view-column wx:for="{{columnsData}}" wx:key="index">
-          <view class="timepicker-item" wx:for="{{item}}" wx:for-item="columnItem" wx:key="columnItem">
-            {{columnItem < 10 && (index === 1 || index === 2 || index === 3 || index === 4) ? '0' + columnItem : columnItem}}
+    <!-- 选择器主体 -->
+    <view class="timepicker-body">
+      <!-- 选择器列容器 -->
+      <view class="timepicker-columns">
+        <!-- 每一列 -->
+        <view 
+          class="timepicker-column" 
+          wx:for="{{columns}}" 
+          wx:for-index="columnIndex" 
+          wx:key="columnIndex"
+          data-column-index="{{columnIndex}}"
+          bindtouchstart="onTouchStart"
+          bindtouchmove="onTouchMove"
+          bindtouchend="onTouchEnd">
+          
+          <!-- 选择器列内容 -->
+          <view class="timepicker-column-content" style="transform: translateY(-{{scrollOffset[columnIndex]}}rpx);">
+            <view 
+              class="timepicker-item {{selectedIndex[columnIndex] === itemIndex ? 'timepicker-item-selected' : ''}}" 
+              wx:for="{{item}}" 
+              wx:for-index="itemIndex" 
+              wx:key="itemIndex"
+              data-column-index="{{columnIndex}}"
+              data-item-index="{{itemIndex}}"
+              bindtap="onItemTap">
+              {{item}}
+            </view>
           </view>
-        </picker-view-column>
-      </picker-view>
+          
+          <!-- 选中区域指示器 -->
+          <view class="timepicker-indicator"></view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
