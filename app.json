@@ -2,8 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/index/index",
-    "pages/timepicker-demo/timepicker-demo",
-    "pages/calendar-demo/calendar-demo"
+    "pages/timepicker-demo/timepicker-demo"
   ],
   "window": {
     "backgroundTextStyle": "light",
