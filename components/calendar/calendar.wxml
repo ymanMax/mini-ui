@@ -1,0 +1,74 @@
+<!-- components/calendar/calendar.wxml -->
+<view class="calendar-modal {{isOpen?'cur':''}}" style="{{maskStyle}}">
+  <!-- 遮罩层 -->
+  <view class="modal-mask" bindtap="tapMask"></view>
+
+  <!-- 日历弹窗 -->
+  <view class="calendar-popup" style="{{calendarStyle}}">
+    <!-- 顶部标题栏 -->
+    <view class="calendar-header" style="{{headerStyle}}">
+      <view class="header-left">
+        <text class="btn-text" style="{{cancelStyle}}" bindtap="cancelSelection">{{cancelText}}</text>
+      </view>
+
+      <view class="header-center">
+        <text class="title-text" style="{{titleStyle}}">{{titleText}}</text>
+      </view>
+
+      <view class="header-right">
+        <text class="btn-text" style="{{confirmStyle}}" bindtap="confirmSelection" data-confirm="true">{{confirmText}}</text>
+      </view>
+    </view>
+
+    <!-- 月份切换栏 -->
+    <view class="calendar-nav">
+      <view class="nav-arrow nav-prev" bindtap="prevMonth">
+        <text class="arrow-icon">‹</text>
+      </view>
+
+      <view class="nav-date" bindtap="jumpToToday">
+        <text class="nav-year">{{currentYear}}年</text>
+        <text class="nav-month">{{currentMonth}}月</text>
+      </view>
+
+      <view class="nav-arrow nav-next" bindtap="nextMonth">
+        <text class="arrow-icon">›</text>
+      </view>
+    </view>
+
+    <!-- 日历主体 -->
+    <view class="calendar-body"
+          bindtouchstart="touchStart"
+          bindtouchmove="touchMove"
+          bindtouchend="touchEnd">
+      <!-- 星期标题 -->
+      <view class="calendar-weekdays" wx:for="{{calendarData}}" wx:key="type" wx:if="{{item.type === 'weekday'}}">
+        <view class="weekday-item" wx:for="{{item.days}}" wx:key="index" wx:for-item="weekday">
+          <text class="weekday-text">{{weekday}}</text>
+        </view>
+      </view>
+
+      <!-- 日历网格 -->
+      <view class="calendar-weeks" wx:for="{{calendarData}}" wx:key="type" wx:if="{{item.type === 'week'}}">
+        <view class="week-item">
+          <view class="day-item"
+                wx:for="{{item.days}}"
+                wx:key="dateStr"
+                wx:for-item="day"
+                data-date="{{day.dateStr}}"
+                data-isdisabled="{{day.isDisabled}}"
+                bindtap="tapDate"
+                class="{{day.isCurrentMonth ? 'current-month' : 'other-month'}}
+                       {{day.isSelected ? 'selected' : ''}}
+                       {{day.isDisabled ? 'disabled' : ''}}
+                       {{day.isToday ? 'today' : ''}}
+                       {{day.isInRange ? 'in-range' : ''}}
+                       {{day.isRangeStart ? 'range-start' : ''}}
+                       {{day.isRangeEnd ? 'range-end' : ''}}">
+            <text class="day-text">{{day.dayText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,278 @@
+/* components/calendar/calendar.wxss */
+
+/* 模态框背景 */
+.calendar-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.calendar-modal.cur {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 遮罩层 */
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* 日历弹窗 */
+.calendar-popup {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 16rpx 16rpx 0 0;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.calendar-modal.cur .calendar-popup {
+  transform: translateY(0);
+}
+
+/* 顶部标题栏 */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.header-left,
+.header-right {
+  flex: 1;
+}
+
+.header-center {
+  flex: 2;
+  text-align: center;
+}
+
+.btn-text {
+  font-size: 32rpx;
+  color: #666666;
+}
+
+.btn-text:active {
+  opacity: 0.7;
+}
+
+.title-text {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* 月份切换栏 */
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 32rpx;
+  background: #f8f8f8;
+}
+
+.nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.nav-arrow:active {
+  transform: scale(0.95);
+}
+
+.nav-prev {
+  margin-right: 24rpx;
+}
+
+.nav-next {
+  margin-left: 24rpx;
+}
+
+.arrow-icon {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.nav-date {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-date:active {
+  opacity: 0.7;
+}
+
+.nav-year {
+  font-size: 32rpx;
+  color: #333333;
+  margin-right: 8rpx;
+}
+
+.nav-month {
+  font-size: 32rpx;
+  color: #333333;
+}
+
+/* 日历主体 */
+.calendar-body {
+  padding: 16rpx 32rpx 32rpx;
+  height: 600rpx;
+  overflow: hidden;
+}
+
+/* 星期标题 */
+.calendar-weekdays {
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.weekday-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+}
+
+.weekday-text {
+  font-size: 28rpx;
+  color: #666666;
+  font-weight: 500;
+}
+
+/* 日历网格 */
+.calendar-weeks {
+  height: 500rpx;
+  overflow: hidden;
+}
+
+.week-item {
+  display: flex;
+  margin-bottom: 8rpx;
+}
+
+.day-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  border-radius: 8rpx;
+  margin: 0 4rpx;
+  position: relative;
+}
+
+.day-item:active {
+  transform: scale(0.95);
+}
+
+.day-text {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+/* 当前月份 */
+.day-item.current-month {
+  background: transparent;
+}
+
+/* 其他月份 */
+.day-item.other-month {
+  background: transparent;
+}
+
+.day-item.other-month .day-text {
+  color: #cccccc;
+}
+
+/* 选中状态 */
+.day-item.selected {
+  background: #1890ff;
+}
+
+.day-item.selected .day-text {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* 禁用状态 */
+.day-item.disabled {
+  pointer-events: none;
+  background: transparent;
+}
+
+.day-item.disabled .day-text {
+  color: #cccccc;
+}
+
+/* 今天 */
+.day-item.today {
+  background: #e6f7ff;
+}
+
+.day-item.today .day-text {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+/* 范围选择相关 */
+.day-item.in-range {
+  background: #e6f7ff;
+  border-radius: 0;
+}
+
+.day-item.range-start {
+  background: #1890ff;
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+.day-item.range-end {
+  background: #1890ff;
+  border-radius: 0 8rpx 8rpx 0;
+}
+
+.day-item.range-start.range-end {
+  border-radius: 8rpx;
+}
+
+.day-item.in-range .day-text {
+  color: #1890ff;
+}
+
+.day-item.range-start .day-text,
+.day-item.range-end .day-text {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* 自定义样式覆盖 */
+.calendar-header[style],
+.calendar-nav[style],
+.calendar-popup[style],
+.calendar-modal[style],
+.btn-text[style],
+.title-text[style] {
+  /* 允许通过属性设置的样式覆盖默认样式 */
+}
