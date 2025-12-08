@@ -58,13 +58,7 @@
                 data-date="{{day.dateStr}}"
                 data-isdisabled="{{day.isDisabled}}"
                 bindtap="tapDate"
-                class="{{day.isCurrentMonth ? 'current-month' : 'other-month'}}
-                       {{day.isSelected ? 'selected' : ''}}
-                       {{day.isDisabled ? 'disabled' : ''}}
-                       {{day.isToday ? 'today' : ''}}
-                       {{day.isInRange ? 'in-range' : ''}}
-                       {{day.isRangeStart ? 'range-start' : ''}}
-                       {{day.isRangeEnd ? 'range-end' : ''}}">
+                class="{{day.isCurrentMonth ? 'current-month' : 'other-month'}} {{day.isSelected ? 'selected' : ''}} {{day.isDisabled ? 'disabled' : ''}} {{day.isToday ? 'today' : ''}} {{day.isInRange ? 'in-range' : ''}} {{day.isRangeStart ? 'range-start' : ''}} {{day.isRangeEnd ? 'range-end' : ''}}">
             <text class="day-text">{{day.dayText}}</text>
           </view>
         </view>
